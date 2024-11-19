@@ -23,3 +23,11 @@ def auth_middleware(view_func):
         # Nếu hợp lệ, tiếp tục xử lý request
         return view_func(view, request, *args, **kwargs)
     return wrapper
+
+
+def admin_middleware(view_func):
+    @wraps(view_func)
+    def wrapper(request, *args, **kwargs):
+        print('Admin midleware')
+        return view_func(request, *args, **kwargs)
+    return wrapper

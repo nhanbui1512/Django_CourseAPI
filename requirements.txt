@@ -8,3 +8,4 @@ Pillow
 markdown
 django-filter
 django-oauth-toolkit
+drf-yasg
