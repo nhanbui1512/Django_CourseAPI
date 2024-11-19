@@ -20,4 +20,5 @@ class LessionSerializer(ModelSerializer):
 
     class Meta:
         model = Lession
-        fields = ['id', 'subject', 'content', 'created_at', 'course', 'tags']
+        fields = ['id', 'subject', 'content',
+                  'created_at', 'course', 'tags', 'image']
