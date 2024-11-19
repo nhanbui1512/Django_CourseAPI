@@ -1,16 +1,19 @@
-from django.forms.models import model_to_dict
-from rest_framework.response import Response
-from rest_framework.decorators import api_view
+from django.http import HttpResponse
+from .models import *
+from .serializers import *
 
-from product.models import Product
+from rest_framework import viewsets
 
 
+class CourseViewSet(viewsets.ModelViewSet):
+    queryset = Course.objects.filter(active=True)
+    serializer_class = CourseSerializer
 
-# Create your views here.
-@api_view(["GET"])
-def api_home(request, *args,**kwargs):
-  model_data = Product.objects.all().order_by("?").first()
-  data = {}
-  if(model_data):
-    data = model_to_dict(model_data, fields=['title','id'])
-  return Response(data)
+
+class LessionViewSet(viewsets.ModelViewSet):
+    queryset = Lession.objects.filter(active=True)
+    serializer_class = LessionSerializer
+
+
+def api_home(request):
+    return HttpResponse("Hello")

@@ -1,7 +1,12 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
-#from .views import api_home
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register('courses', views.CourseViewSet)
+router.register('lessions', views.LessionViewSet)
+
 urlpatterns = [
-  path('',views.api_home)
+    path('', include(router.urls)),
 ]
